@@ -3,11 +3,12 @@ import done from '../assets/done.svg'
 import progress from '../assets/progress.svg';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
+import backlog from '../assets/backlog.svg';
 
 function StatusIcon({status}) {
  
   if(status == 'Backlog'){
-    return <div className='mt-1'><img src={`${done}`}/></div>
+    return <div className='mt-1'> <img src={backlog}/></div>
   }else if(status == 'In progress'){
     return <div className='mt-1'><img src={`${progress}`}/></div>
   }else if(status == 'Todo'){
