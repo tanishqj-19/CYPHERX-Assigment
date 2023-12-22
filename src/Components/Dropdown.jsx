@@ -2,15 +2,20 @@ import React, { useContext, useState } from "react";
 import Tune from "../assets/tune.svg";
 import dropicon from "../assets/dropicon.svg";
 import DisplayContext from "../Context/DisplayContext";
+import { useOutsideClick } from "../Hooks/UseOutsideClick";
 
 function Dropdown() {
   const {grouping,setGrouping,ordering,setOrdering} = useContext(DisplayContext)
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const outside = useOutsideClick( () => {
+    setDropdownOpen(false)
+  })
   const handleDropdown = () => {
     setDropdownOpen((prev) => !prev);
   };
   return (
-  <div className="relative py-2 px-4 bg-white dark:bg-dark-secondary ">
+  <div ref={outside} className="relative py-2 px-4 bg-white dark:bg-dark-secondary cursor-pointer cur">
             <div className="flex cursor-pointer gap-4 text-gray-700 items-center border-2 border-[#e6e7eb] dark:border-dark-border-color dark:shadow-dk w-fit p-1 rounded-md" 
             onClick={handleDropdown}>
                 <div className="flex gap-2 items-center">
@@ -27,7 +32,7 @@ function Dropdown() {
                 </div>
             </div>
 
-
+            
             {<section style={{
                 transition: 'opacity 0.5s ease-in-out',
                 opacity: !dropdownOpen ? 0 : 1,
