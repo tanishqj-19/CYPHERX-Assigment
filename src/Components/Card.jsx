@@ -8,7 +8,7 @@ function Card({ticket,user}) {
     const {grouping} = useContext(DisplayContext)
     
   return (
-    <div className='w-full flex flex-col rounded pt-3 pb-3 pl-5 pr-5 bg-light-secondary dark:bg-dark-secondary border  border-dark-secondary dark:border-light-secondary'>
+    <div className='w-full flex flex-col rounded pt-3 pb-3 pl-5 pr-5 bg-light-secondary dark:bg-dark-secondary border shadow border-dark-secondary dark:border-dark-border-color'>
         <div className='flex flex-row justify-between text-text-2'>
             <div>{ticket.id}</div>
             <div>{grouping!=='user' && <UserIcon username={username} />}</div>

@@ -10,55 +10,46 @@ function Dropdown() {
     setDropdownOpen((prev) => !prev);
   };
   return (
-    <div className="border border-gray-200 dark:border-neutral-600 rounded p-1">
-      <div
-        className="flex flex-row items-center text-lg gap-1 "
-        onClick={handleDropdown}
-      >
-        <div className="text-base">
-          <img src={Tune} alt="" />
+  <div className="relative py-2 px-4 bg-white dark:bg-dark-secondary ">
+            <div className="flex cursor-pointer gap-4 text-gray-700 items-center border-2 border-[#e6e7eb] dark:border-dark-border-color dark:shadow-dk w-fit p-1 rounded-md" 
+            onClick={handleDropdown}>
+                <div className="flex gap-2 items-center">
+                    <div className='rotate-[270deg]'>
+                    <svg stroke="currentColor" fill="#4a4a4a" strokeWidth="0" viewBox="0 0 16 16" className="icon" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" clipRule="evenodd" d="M3.5 2h-1v5h1V2zm6.1 5H6.4L6 6.45v-1L6.4 5h3.2l.4.5v1l-.4.5zm-5 3H1.4L1 9.5v-1l.4-.5h3.2l.4.5v1l-.4.5zm3.9-8h-1v2h1V2zm-1 6h1v6h-1V8zm-4 3h-1v3h1v-3zm7.9 0h3.19l.4-.5v-.95l-.4-.5H11.4l-.4.5v.95l.4.5zm2.1-9h-1v6h1V2zm-1 10h1v2h-1v-2z"></path></svg>
+                    </div>
+                    <p className="dark:text-white">Display</p>
+                </div>
+                <div style={{
+                    transition: 'transform 0.5s ease-in-out',
+                    transform: dropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}>
+                    <svg stroke="currentColor" fill={"#4a4a4a"}strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+                </div>
+            </div>
+
+
+            {<section style={{
+                transition: 'opacity 0.5s ease-in-out',
+                opacity: !dropdownOpen ? 0 : 1,
+            }} className="absolute bg-white dark:bg-dark-secondary border dark:border-dark-border-color 
+             dark:shadow-dk z-40 py-2 px-4 -bottom-24 rounded-md flex flex-col gap-4 ">
+                <div className="flex gap-12"><span>Grouping</span>
+                    <select name="grouping" id="grouping" onClick={(e)=>setGrouping(e.target.value)} className='w-24 focus:outline-none border-2 border-gray-300 p-0.5 rounded-md dark:shadow-dk dark:border-dark-border-color dark:bg-dark-secondary'>
+                        <option value="status">Status</option>
+                        <option value="user">User</option>
+                        <option value="priority">Priority</option>
+                    </select>
+                </div>
+                <div className="flex gap-12"><span>Ordering</span>
+                    <select name="ordering" id="ordering" onClick={(e)=>setOrdering(e.target.value)} className='w-24 focus:outline-none border-2 border-gray-300 p-0.5 rounded-md dark:shadow-dk dark:border-dark-border-color dark:bg-dark-secondary'>
+                        <option value="priority">Priority</option>
+                        <option value="title">Title</option>
+                    </select>
+                </div>
+            </section>}
+      
+            
         </div>
-        Display
-        <div className="text-base">
-          <img src={dropicon} alt="" />
-        </div>
-      </div>
-      <div
-        className={`${
-          dropdownOpen ? "absolute" : "hidden"
-        } bg-light-secondary dark:bg-dark-secondary p-4 border border-dark-secondary dark:border-light-secondary top-16 left-8 rounded-md z-20`}
-      >
-        <div className="flex flex-col gap-3">
-          <div className=" flex flex-row gap-20 w-full justify-between">
-            <span>Grouping</span>
-            <select
-              name="Grouping"
-              id="grouping"
-              value={grouping}
-              className="bg-light-secondary dark:bg-dark-secondary border rounded pl-2 pr-8 pt-1 pb-1"
-              onChange={(e)=>setGrouping(e.target.value)}
-            >
-              <option value="status">Status</option>
-              <option value="user">User</option>
-              <option value="priority">Priority</option>
-            </select>
-          </div>
-          <div className=" flex flex-row gap-20 w-full justify-between">
-            <span>Ordering</span>
-            <select
-              name="ordering"
-              id="ordering"
-              value={ordering}
-              className="bg-light-secondary dark:bg-dark-secondary border rounded pl-2 pr-8 pt-1 pb-1"
-              onChange={(e)=>setOrdering(e.target.value)}
-            >
-              <option value="priority">Priority</option>
-              <option value="title">Title</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
