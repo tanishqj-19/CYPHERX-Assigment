@@ -1,6 +1,7 @@
 import React from 'react'
 import UserIcon from './UserIcon'
 import { statusMap,priorityMap } from '../utils/general'
+import PriorityIcon from './PriorityIcon'
 
 function GroupHeading({type,userDetails,count,val}) {
 
@@ -24,6 +25,7 @@ function GroupHeading({type,userDetails,count,val}) {
             {
               type==='priority' &&
               <div className='flex flex-row gap-2'>
+                <div> <PriorityIcon priority={val}/></div>
                 <div>{priorityMap[val]}</div>
                 <div>{count}</div>
               </div>
